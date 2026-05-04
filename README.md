@@ -20,8 +20,8 @@ For smaller datasets, the full graph is shown immediately. For larger datasets, 
 
 ## Input formats
 
-- **NDJSON** — one resource per line (`.ndjson`)
-- **JSON** — single resource or FHIR Bundle (`.json`)
+- **NDJSON** - one resource per line (`.ndjson`)
+- **JSON** - single resource or FHIR Bundle (`.json`)
 
 Both formats can coexist in the same directory.
 
@@ -29,10 +29,6 @@ Both formats can coexist in the same directory.
 
 `--dir`
 Required. Path to the directory containing FHIR output files.
-
-
-
-
 
 ## Requirements
 
