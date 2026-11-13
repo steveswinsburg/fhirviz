@@ -1,5 +1,7 @@
 # fhirviz
 
+[![CI](https://github.com/steveswinsburg/fhirviz/actions/workflows/ci.yml/badge.svg)](https://github.com/steveswinsburg/fhirviz/actions/workflows/ci.yml)
+
 Interactive reference graph visualiser for FHIR resources.
 
 Reads a directory of `.ndjson` or `.json` FHIR files and renders a force-directed network of resource references as an HTML file.
@@ -41,9 +43,17 @@ Required. Path to the directory containing FHIR output files.
 
 ## Requirements
 
-Node.js 18 or newer.
+Node.js 22 or newer.
 
 The generated graph loads vis-network from a CDN, so a network connection is required when viewing it.
+
+## Development
+
+```sh
+npm ci
+npm test
+npm link
+```
 
 ## License
 
