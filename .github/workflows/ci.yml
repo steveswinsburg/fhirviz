@@ -45,9 +45,9 @@ jobs:
       - name: Publish to npm
         run: |
           version="$(node -p "require('./package.json').version")"
-          published="$(npm view "fhirviz-cli@${version}" version 2>/dev/null || true)"
+          published="$(npm view "fhirviz@${version}" version 2>/dev/null || true)"
           if [ "$published" = "$version" ]; then
-            echo "fhirviz-cli@${version} is already on npm, skipping publish"
+            echo "fhirviz@${version} is already on npm, skipping publish"
           else
             npm publish
           fi

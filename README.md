@@ -15,16 +15,18 @@ For very large datasets, the generated HTML now opens in an overview mode instea
 After the package is published to npm, run it without a global install:
 
 ```sh
-npx fhirviz-cli --dir path/to/fhir/files
+npx fhirviz path/to/fhir/files
 ```
 
 The graph is written to `graph.html` inside the same directory. Open it in any browser.
+To process FHIR files in the current directory, use `npx fhirviz .`.
+Running the command without arguments displays help.
 
 To install the command globally instead:
 
 ```sh
-npm install --global fhirviz-cli
-fhirviz --dir path/to/fhir/files
+npm install --global fhirviz
+fhirviz path/to/fhir/files
 ```
 
 For smaller datasets, the full graph is shown immediately. For larger datasets, the page starts with a resource-type summary and lets you expand a selected node's neighborhood at configurable depth and size.
@@ -38,8 +40,8 @@ Both formats can coexist in the same directory.
 
 ## CLI
 
-`--dir`
-Required. Path to the directory containing FHIR output files.
+`<path>`
+Path to the directory containing FHIR output files. Use `.` to process the current directory. The previous `--dir <path>` form is also supported.
 
 ## Requirements
 

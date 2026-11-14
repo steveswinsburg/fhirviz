@@ -81,7 +81,7 @@ test("renderHtml embeds graph data safely and replaces all template tokens", asy
   assert.doesNotThrow(() => new Script(browserScript));
 });
 
-test("CLI writes graph.html and reports argument errors", async () => {
+test("CLI accepts positional and legacy paths and shows help without arguments", async () => {
   await withTemporaryDirectory(async (directory) => {
     await writeFile(
       path.join(directory, "patient.json"),
@@ -91,17 +91,33 @@ test("CLI writes graph.html and reports argument errors", async () => {
     const scriptPath = new URL("../src/fhirviz.js", import.meta.url);
     const result = spawnSync(
       process.execPath,
-      [scriptPath.pathname, "--dir", directory],
+      [scriptPath.pathname, directory],
       { encoding: "utf8" },
     );
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /Graph written to:/);
     assert.match(await readFile(path.join(directory, "graph.html"), "utf8"), /Patient\/patient-1/);
 
-    const missingDir = spawnSync(process.execPath, [scriptPath.pathname], {
+    const currentDirectory = spawnSync(
+      process.execPath,
+      [scriptPath.pathname, "."],
+      { cwd: directory, encoding: "utf8" },
+    );
+    assert.equal(currentDirectory.status, 0, currentDirectory.stderr);
+    assert.match(currentDirectory.stdout, /Graph written to:/);
+
+    const help = spawnSync(process.execPath, [scriptPath.pathname], {
       encoding: "utf8",
     });
-    assert.equal(missingDir.status, 1);
-    assert.match(missingDir.stderr, /Missing required argument: --dir/);
+    assert.equal(help.status, 0, help.stderr);
+    assert.match(help.stdout, /Usage: fhirviz <path>/);
+
+    const legacy = spawnSync(
+      process.execPath,
+      [scriptPath.pathname, "--dir", directory],
+      { encoding: "utf8" },
+    );
+    assert.equal(legacy.status, 0, legacy.stderr);
+    assert.match(legacy.stdout, /Graph written to:/);
   });
 });

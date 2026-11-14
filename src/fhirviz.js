@@ -347,27 +347,36 @@ function parseArguments(argumentsList) {
     if (argument === "--help" || argument === "-h") {
       return { help: true };
     }
-    if (argument !== "--dir") {
+    if (argument === "--dir") {
+      if (directory) {
+        throw new Error("Directory path provided more than once");
+      }
+      directory = argumentsList[index + 1];
+      if (!directory || directory.startsWith("--")) {
+        throw new Error("--dir requires a directory path");
+      }
+      index += 1;
+    } else if (argument.startsWith("-")) {
       throw new Error(`Unknown argument: ${argument}`);
+    } else if (directory) {
+      throw new Error(`Unexpected argument: ${argument}`);
+    } else {
+      directory = argument;
     }
-    directory = argumentsList[index + 1];
-    if (!directory || directory.startsWith("--")) {
-      throw new Error("--dir requires a directory path");
-    }
-    index += 1;
   }
   if (!directory) {
-    throw new Error("Missing required argument: --dir");
+    return { help: true };
   }
   return { directory };
 }
 
-const HELP = `Usage: fhirviz --dir <path>
+const HELP = `Usage: fhirviz <path>
 
 Render a FHIR resource reference graph as interactive HTML.
 
 Options:
-  --dir <path>  Directory containing FHIR .ndjson or .json files
+  <path>        Directory containing FHIR .ndjson or .json files (use . for the current directory)
+  --dir <path>  Alias for <path>
   -h, --help    Show this help
 `;
 
