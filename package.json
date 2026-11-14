@@ -1,0 +1,50 @@
+{
+  "name": "fhirviz",
+  "version": "1.0.0",
+  "description": "Interactive reference graph visualiser for FHIR resources",
+  "type": "module",
+  "bin": {
+    "fhirviz": "./src/fhirviz.js"
+  },
+  "files": [
+    "src",
+    "docs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steveswinsburg/fhirviz.git"
+  },
+  "homepage": "https://github.com/steveswinsburg/fhirviz#readme",
+  "bugs": {
+    "url": "https://github.com/steveswinsburg/fhirviz/issues"
+  },
+  "author": {
+    "name": "Steve Swinsburg",
+    "url": "https://github.com/steveswinsburg"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/steveswinsburg"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "fhir",
+    "fhirviz",
+    "hl7",
+    "healthcare",
+    "health-informatics",
+    "graph",
+    "visualization",
+    "cli"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "Apache-2.0"
+}
