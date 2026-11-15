@@ -43,6 +43,9 @@ Both formats can coexist in the same directory.
 `<path>`
 Path to the directory containing FHIR output files. Use `.` to process the current directory. The previous `--dir <path>` form is also supported.
 
+`--open`
+Open the generated `graph.html` in the default browser after it's written.
+
 ## Requirements
 
 Node.js 22 or newer.

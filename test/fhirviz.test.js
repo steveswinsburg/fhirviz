@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
@@ -98,6 +98,16 @@ test("CLI accepts positional and legacy paths and shows help without arguments",
     assert.match(result.stdout, /Graph written to:/);
     assert.match(await readFile(path.join(directory, "graph.html"), "utf8"), /Patient\/patient-1/);
 
+    const linkedScriptPath = path.join(directory, "fhirviz");
+    await symlink(scriptPath.pathname, linkedScriptPath);
+    const linked = spawnSync(
+      process.execPath,
+      [linkedScriptPath, directory],
+      { encoding: "utf8" },
+    );
+    assert.equal(linked.status, 0, linked.stderr);
+    assert.match(linked.stdout, /Graph written to:/);
+
     const currentDirectory = spawnSync(
       process.execPath,
       [scriptPath.pathname, "."],
@@ -111,6 +121,17 @@ test("CLI accepts positional and legacy paths and shows help without arguments",
     });
     assert.equal(help.status, 0, help.stderr);
     assert.match(help.stdout, /Usage: fhirviz <path>/);
+
+    await withTemporaryDirectory(async (emptyDirectory) => {
+      const empty = spawnSync(
+        process.execPath,
+        [scriptPath.pathname, emptyDirectory],
+        { encoding: "utf8" },
+      );
+      assert.equal(empty.status, 1);
+      assert.match(empty.stderr, /No FHIR resources found/);
+      assert.doesNotMatch(empty.stdout, /Graph written to:/);
+    });
 
     const legacy = spawnSync(
       process.execPath,

@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
+import { realpathSync } from "node:fs";
 import { readFile, readdir, stat, writeFile } from "node:fs/promises";
+import { spawn } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -342,12 +344,15 @@ export async function renderHtml(nodes, edges, title) {
 
 function parseArguments(argumentsList) {
   let directory;
+  let open = false;
   for (let index = 0; index < argumentsList.length; index += 1) {
     const argument = argumentsList[index];
     if (argument === "--help" || argument === "-h") {
       return { help: true };
     }
-    if (argument === "--dir") {
+    if (argument === "--open") {
+      open = true;
+    } else if (argument === "--dir") {
       if (directory) {
         throw new Error("Directory path provided more than once");
       }
@@ -367,7 +372,7 @@ function parseArguments(argumentsList) {
   if (!directory) {
     return { help: true };
   }
-  return { directory };
+  return { directory, open };
 }
 
 const HELP = `Usage: fhirviz <path>
@@ -377,8 +382,19 @@ Render a FHIR resource reference graph as interactive HTML.
 Options:
   <path>        Directory containing FHIR .ndjson or .json files (use . for the current directory)
   --dir <path>  Alias for <path>
+  --open        Open the generated graph.html in the default browser
   -h, --help    Show this help
 `;
+
+function openInBrowser(filePath) {
+  const platform = process.platform;
+  const command =
+    platform === "darwin" ? "open" : platform === "win32" ? "cmd" : "xdg-open";
+  const args =
+    platform === "win32" ? ["/c", "start", "", filePath] : [filePath];
+  const child = spawn(command, args, { detached: true, stdio: "ignore" });
+  child.unref();
+}
 
 export async function main(argumentsList = process.argv.slice(2)) {
   const options = parseArguments(argumentsList);
@@ -398,6 +414,9 @@ export async function main(argumentsList = process.argv.slice(2)) {
   const { nodes, edges } = await buildGraph(directory, (message) => {
     console.warn(`Warning: ${message}`);
   });
+  if (nodes.size === 0) {
+    throw new Error(`No FHIR resources found in: ${directory}`);
+  }
   console.log(`  ${nodes.size.toLocaleString("en-US")} nodes, ${edges.length.toLocaleString("en-US")} edges`);
   if (nodes.size >= LARGE_GRAPH_THRESHOLD) {
     console.log("  Large dataset detected: graph will open in overview mode with neighborhood exploration.");
@@ -406,9 +425,16 @@ export async function main(argumentsList = process.argv.slice(2)) {
   const html = await renderHtml(nodes, edges, title);
   await writeFile(outputPath, html, "utf8");
   console.log(`Graph written to: ${outputPath}`);
+
+  if (options.open) {
+    openInBrowser(outputPath);
+  }
 }
 
-if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
+if (
+  process.argv[1] &&
+  realpathSync(fileURLToPath(import.meta.url)) === realpathSync(process.argv[1])
+) {
   main().catch((error) => {
     console.error(`Error: ${error.message}`);
     process.exitCode = 1;
