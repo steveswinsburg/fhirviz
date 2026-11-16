@@ -1,6 +1,6 @@
 {
   "name": "fhirviz",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Interactive reference graph visualiser for FHIR resources",
   "type": "module",
   "bin": {
