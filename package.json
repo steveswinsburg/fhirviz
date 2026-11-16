@@ -4,7 +4,7 @@
   "description": "Interactive reference graph visualiser for FHIR resources",
   "type": "module",
   "bin": {
-    "fhirviz": "./src/fhirviz.js"
+    "fhirviz": "src/fhirviz.js"
   },
   "files": [
     "src",
