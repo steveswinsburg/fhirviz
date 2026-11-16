@@ -70,10 +70,6 @@ npm test
 npm link
 ```
 
-## License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
 ---
 
 Made with ❤️ for the FHIR community
