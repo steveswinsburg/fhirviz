@@ -1,0 +1,95 @@
+{
+  "resourceType": "Organization",
+  "id": "example-healthconnect-organization-6",
+  "meta": {
+    "profile": [
+      "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hcpd-organization"
+    ],
+    "lastUpdated": "2025-09-06T09:00:00Z"
+  },
+  "identifier": [
+    {
+      "extension": [
+        {
+          "url": "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hi-org-classification",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://digitalhealth.gov.au/fhir/hcpd/CodeSystem/hi-org-classification-cs",
+                "code": "network",
+                "display": "Network"
+              }
+            ]
+          }
+        },
+        {
+          "url": "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hi-services-identifier-status",
+          "valueCoding": {
+            "system": "http://digitalhealth.gov.au/fhir/hcpd/CodeSystem/hi-services-identifier-status-cs",
+            "code": "A",
+            "display": "Active"
+          }
+        }
+      ],
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org.au/CodeSystem/v2-0203",
+            "code": "NOI"
+          }
+        ],
+        "text": "HPI-O"
+      },
+      "system": "http://ns.electronichealth.net.au/id/hi/hpio/1.0",
+      "value": "8003621043321812"
+    },
+    {
+      "type": {
+        "text": "ABN"
+      },
+      "system": "http://hl7.org.au/id/abn",
+      "value": "96001338908"
+    },
+    {
+      "type": {
+        "text": "ACN"
+      },
+      "system": "http://hl7.org.au/id/acn",
+      "value": "386379402"
+    }
+  ],
+  "active": true,
+  "name": "Northern Rivers Medical Group",
+  "alias": [
+    "NthRivers"
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "0765423511",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "contact@nthrivers.example.au",
+      "use": "work"
+    },
+    {
+      "system": "url",
+      "value": "https://nthrivers.example.au",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "type": "physical",
+      "line": [
+        "12 Tweed Street"
+      ],
+      "city": "Lismore",
+      "state": "NSW",
+      "postalCode": "2480",
+      "country": "AU"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "resourceType": "Practitioner",
+  "id": "example-healthconnect-practitioner-7",
+  "meta": {
+    "profile": [
+      "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hcpd-practitioner"
+    ],
+    "lastUpdated": "2025-09-07T08:00:00Z"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+      "extension": [
+        {
+          "url": "value",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "female",
+                "display": "Female"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity",
+      "extension": [
+        {
+          "url": "value",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "446141000124107",
+                "display": "Identifies as female gender"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "identifier": [
+    {
+      "extension": [
+        {
+          "url": "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hi-services-identifier-status",
+          "valueCoding": {
+            "system": "http://digitalhealth.gov.au/fhir/hcpd/CodeSystem/hi-services-identifier-status-cs",
+            "code": "A",
+            "display": "Active"
+          }
+        }
+      ],
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NPI"
+          }
+        ]
+      },
+      "system": "http://ns.electronichealth.net.au/id/hi/hpii/1.0",
+      "value": "8003611586923223"
+    },
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org.au/CodeSystem/v2-0203",
+            "code": "PRES",
+            "display": "Prescriber Number"
+          }
+        ],
+        "text": "Prescriber Number"
+      },
+      "system": "http://ns.electronichealth.net.au/id/medicare-prescriber-number",
+      "value": "453197"
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "text": "Dr Sophie Clarke",
+      "family": "Clarke",
+      "given": [
+        "Sophie"
+      ],
+      "prefix": [
+        "Dr"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "0502563421",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "sophie.clarke@example.com",
+      "use": "work"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-09-03",
+  "photo": [
+    {
+      "contentType": "image/png",
+      "url": "https://example.com/photo/example-healthconnect-practitioner-7.png",
+      "title": "Photo of Dr Sophie Clarke"
+    }
+  ],
+  "address": [
+    {
+      "text": "88 Ocean Boulevard Maroochydore QLD 4558",
+      "line": [
+        "88 Ocean Boulevard"
+      ],
+      "city": "Maroochydore",
+      "state": "QLD",
+      "postalCode": "4558",
+      "country": "AUS"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org.au/CodeSystem/v2-0203",
+                "code": "AHPRA"
+              }
+            ]
+          },
+          "system": "http://hl7.org.au/id/ahpra-registration-number",
+          "value": "MED0000932907"
+        }
+      ],
+      "code": {
+        "text": "Physiotherapist"
+      },
+      "issuer": {
+        "display": "Ahpra"
+      }
+    }
+  ]
+}

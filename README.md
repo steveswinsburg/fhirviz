@@ -19,6 +19,16 @@ For smaller datasets, the full graph is shown immediately. For larger datasets, 
 
 ![fhirviz screenshot](docs/au-core-2.0.0.png)
 
+### Try it live
+
+[**Open a live sample graph →**](https://steveswinsburg.github.io/fhirviz/sample-graph.html)
+
+A small, fully-linked set of directory resources (Organization, Practitioner, PractitionerRole, Location, HealthcareService, Endpoint, Provenance) rendered with fhirviz. The sample FHIR data lives in [docs/sample-data](docs/sample-data); regenerate the graph yourself with:
+
+```bash
+fhirviz docs/sample-data --open
+```
+
 ## Install
 
 Global install:
