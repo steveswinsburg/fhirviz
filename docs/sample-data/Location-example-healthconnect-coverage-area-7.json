@@ -1,0 +1,24 @@
+{
+  "resourceType": "Location",
+  "id": "example-healthconnect-coverage-area-7",
+  "meta": {
+    "profile": [
+      "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hcpd-service-coverage-area"
+    ],
+    "lastUpdated": "2025-09-07T10:00:00Z"
+  },
+  "status": "active",
+  "name": "Maroochydore Catchment",
+  "address": {
+    "line": [
+      "88 Ocean Boulevard"
+    ],
+    "city": "Maroochydore",
+    "state": "QLD",
+    "postalCode": "4558",
+    "country": "AU"
+  },
+  "managingOrganization": {
+    "reference": "Organization/example-healthconnect-organization-7"
+  }
+}

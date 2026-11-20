@@ -1,0 +1,125 @@
+{
+  "resourceType": "HealthcareService",
+  "id": "example-healthconnect-healthcareservice-11",
+  "meta": {
+    "profile": [
+      "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hcpd-healthcareservice"
+    ],
+    "lastUpdated": "2025-09-11T12:00:00Z"
+  },
+  "extension": [
+    {
+      "url": "http://digitalhealth.gov.au/fhir/cc/StructureDefinition/active-period",
+      "valuePeriod": {
+        "start": "2022-01-01",
+        "end": "2027-12-31"
+      }
+    },
+    {
+      "url": "http://digitalhealth.gov.au/fhir/cc/StructureDefinition/iar-levels-of-care",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "https://healthterminologies.gov.au/fhir/CodeSystem/iar-levels-of-care-1",
+            "code": "level3",
+            "display": "Level 3 - Moderate intensity services"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://digitalhealth.gov.au/fhir/cc/StructureDefinition/referral-information-for-referrer",
+      "valueMarkdown": "After-hours referrals accepted via secure messaging."
+    }
+  ],
+  "identifier": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "RI"
+          }
+        ],
+        "text": "Resource identifier"
+      },
+      "system": "http://ns.electronichealth.net.au/id/source/pca",
+      "value": "HS-PCA-011"
+    },
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "XX"
+          }
+        ],
+        "text": "Organization identifier"
+      },
+      "system": "http://digitalhealth.gov.au/fhir/hcpd/id/hcpd-local-identifier",
+      "value": "HS001234567901"
+    }
+  ],
+  "active": true,
+  "providedBy": {
+    "reference": "Organization/example-healthconnect-organization-11"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "224891009",
+          "display": "Healthcare services"
+        }
+      ]
+    }
+  ],
+  "location": [
+    {
+      "reference": "Location/example-healthconnect-location-11"
+    }
+  ],
+  "name": "Hobart Waterfront GP",
+  "appointmentRequired": true,
+  "coverageArea": [
+    {
+      "reference": "Location/example-healthconnect-coverage-area-11"
+    }
+  ],
+  "endpoint": [
+    {
+      "reference": "Endpoint/example-healthconnect-endpoint-11"
+    }
+  ],
+  "availableTime": [
+    {
+      "daysOfWeek": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "allDay": false,
+      "availableStartTime": "16:00:00",
+      "_availableStartTime": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/timezone",
+            "valueCode": "Australia/Sydney"
+          }
+        ]
+      },
+      "availableEndTime": "22:00:00",
+      "_availableEndTime": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/timezone",
+            "valueCode": "Australia/Sydney"
+          }
+        ]
+      }
+    }
+  ]
+}

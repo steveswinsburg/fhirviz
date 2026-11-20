@@ -1,0 +1,24 @@
+{
+  "resourceType": "Location",
+  "id": "example-healthconnect-coverage-area-11",
+  "meta": {
+    "profile": [
+      "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hcpd-service-coverage-area"
+    ],
+    "lastUpdated": "2025-09-11T10:00:00Z"
+  },
+  "status": "active",
+  "name": "Hobart Catchment",
+  "address": {
+    "line": [
+      "19 Salamanca Place"
+    ],
+    "city": "Hobart",
+    "state": "TAS",
+    "postalCode": "7000",
+    "country": "AU"
+  },
+  "managingOrganization": {
+    "reference": "Organization/example-healthconnect-organization-11"
+  }
+}

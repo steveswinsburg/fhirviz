@@ -1,0 +1,63 @@
+{
+  "resourceType": "Provenance",
+  "id": "example-healthconnect-provenance-7",
+  "meta": {
+    "profile": [
+      "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hcpd-provenance"
+    ],
+    "lastUpdated": "2025-09-07T14:30:15+10:00"
+  },
+  "target": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/targetPath",
+          "valueString": "qualification[0].code.text"
+        }
+      ],
+      "reference": "Practitioner/example-healthconnect-practitioner-7"
+    }
+  ],
+  "recorded": "2025-09-07T14:30:15.100+10:00",
+  "activity": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-DataOperation",
+        "code": "UPDATE"
+      }
+    ]
+  },
+  "agent": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type",
+            "code": "author"
+          }
+        ]
+      },
+      "role": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/contractsignertypecodes",
+              "code": "AMENDER"
+            }
+          ]
+        }
+      ],
+      "who": {
+        "reference": "Organization/example-healthconnect-organization-7"
+      }
+    }
+  ],
+  "entity": [
+    {
+      "role": "source",
+      "what": {
+        "reference": "Practitioner/example-healthconnect-practitioner-7"
+      }
+    }
+  ]
+}

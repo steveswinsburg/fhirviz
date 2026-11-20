@@ -1,0 +1,73 @@
+{
+  "resourceType": "Endpoint",
+  "id": "example-healthconnect-endpoint-11",
+  "meta": {
+    "profile": [
+      "http://digitalhealth.gov.au/fhir/hcpd/StructureDefinition/hcpd-endpoint"
+    ],
+    "lastUpdated": "2025-09-11T10:00:00Z"
+  },
+  "status": "suspended",
+  "connectionType": {
+    "system": "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
+    "code": "hl7-fhir-msg",
+    "display": "HL7 FHIR Messaging"
+  },
+  "name": "Hobart Waterfront Health SMD Endpoint",
+  "managingOrganization": {
+    "reference": "Organization/example-healthconnect-organization-11"
+  },
+  "period": {
+    "start": "2022-01-01",
+    "end": "2027-12-31"
+  },
+  "address": "https://smd.hobartwf.example.au/endpoint",
+  "identifier": [
+    {
+      "system": "http://ns.electronichealth.net.au/smd/target",
+      "value": "SMD001234567811"
+    },
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "RI"
+          }
+        ],
+        "text": "Resource identifier"
+      },
+      "system": "http://ns.electronichealth.net.au/id/source/nhsd",
+      "value": "EP-NHSD-001234567811"
+    },
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "XX"
+          }
+        ],
+        "text": "Organization Identifier"
+      },
+      "system": "http://digitalhealth.gov.au/fhir/hcpd/id/hcpd-local-identifier",
+      "value": "EP001234567811"
+    }
+  ],
+  "payloadType": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org.au/fhir/pd/CodeSystem/endpoint-payload-type",
+          "code": "http://ns.hl7.org.au/hl7v2/profiles/HL7AU-OO-REF-SIMPLIFIED-201706",
+          "display": "HL7 V2.4 REF message (Level 2)"
+        }
+      ]
+    }
+  ],
+  "payloadMimeType": [
+    "application/pdf",
+    "application/fhir+xml",
+    "application/fhir+json"
+  ]
+}
